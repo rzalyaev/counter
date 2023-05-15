@@ -1,0 +1,32 @@
+.button {
+    cursor: pointer;
+    margin: 0 5px;
+    min-height: 40px;
+    min-width: 80px;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    border: 1px solid #E8EDE7;
+    border-radius: 5px;
+    background-color: #2F3148;
+    transition: background-color 200ms ease-in-out;
+}
+
+button:disabled {
+    cursor: no-drop;
+    background-color: #8689AC;
+}
+
+button:hover {
+    transition: background-color 200ms ease-in-out;
+    background-color: #3F5576;
+}
+
+button:disabled:hover {
+    background-color: #8689AC;
+}
+
+button:active {
+    background-color: #27293b;
+}
