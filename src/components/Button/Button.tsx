@@ -12,6 +12,7 @@ export const Button: FC<ButtonPropsType> = ({
                                                 disabled = false,
                                                 onClick,
                                             }) => {
+
     return (
         <button className={styles.button} disabled={disabled} onClick={onClick}>
             {name}
