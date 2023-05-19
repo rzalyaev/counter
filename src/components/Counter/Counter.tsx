@@ -8,9 +8,12 @@ export type CounterPropsType = {
 };
 
 const Counter: FC<CounterPropsType> = () => {
-    const [count, setCount] = useState<number>(0);
-    const [maxValue, setMaxValue] = useState<number>(10);
-    const [minValue, setMinValue] = useState<number>(0);
+    const initialMaxValue: number = 10;
+    const initialMinValue: number = 0;
+
+    const [count, setCount] = useState<number>(initialMinValue);
+    const [maxValue, setMaxValue] = useState<number>(initialMaxValue);
+    const [minValue, setMinValue] = useState<number>(initialMinValue);
     const newMaxValue = useRef<HTMLInputElement>(null);
     const newMinValue = useRef<HTMLInputElement>(null);
     const [areSettingsOpen, setAreSettingsOpen] = useState<boolean>(false);
