@@ -38,22 +38,37 @@ const Counter: FC<CounterPropsType> = () => {
         localStorage.setItem('minValue', JSON.stringify(minValue));
     }, [maxValue, minValue]);
 
-    const plus = () => setCount((prevState) => prevState + 1);
-    const minus = () => setCount((prevState) => prevState - 1);
+    const plus = () => {
+        if (count < maxValue) {
+            setCount((prevState) => prevState + 1);
+        }
+    }
+    const minus = () => {
+        if (count > minValue) {
+            setCount((prevState) => prevState - 1);
+        }
+    }
     const reset = () => setCount(minValue);
 
     const changeMaxValue = () => {
         if (newMaxValue.current) {
-            newMaxValue.current.valueAsNumber >= 0 && setMaxValue(newMaxValue.current.valueAsNumber);
-            newMaxValue.current.valueAsNumber = 0;
-            setCount(0);
+            if (newMaxValue.current.value !== '' &&
+                newMaxValue.current.valueAsNumber > minValue) {
+                setMaxValue(newMaxValue.current.valueAsNumber);
+                setCount(0);
+            }
+            newMaxValue.current.value = '';
         }
     };
 
     const changeMinValue = () => {
         if (newMinValue.current) {
-            newMinValue.current.valueAsNumber >= 0 && setMinValue(newMinValue.current.valueAsNumber);
-            setCount(newMinValue.current.valueAsNumber);
+            if (newMinValue.current.value !== '' &&
+                newMinValue.current.valueAsNumber >= 0 &&
+                newMinValue.current.valueAsNumber < maxValue) {
+                setMinValue(newMinValue.current.valueAsNumber);
+                setCount(newMinValue.current.valueAsNumber);
+            }
             newMinValue.current.value = '';
         }
     };
