@@ -1,10 +1,10 @@
 import React, {FC, useEffect, useRef, useState} from 'react';
 import styles from './Counter.module.css';
 import {Button} from '../Button/Button';
-import {Input} from '../Input/Input';
 import {Settings} from "../Settings/Settings";
 
 export type CounterPropsType = {
+
 };
 
 const Counter: FC<CounterPropsType> = () => {
@@ -27,16 +27,16 @@ const Counter: FC<CounterPropsType> = () => {
 
         const maxValueAsString = localStorage.getItem('maxValue');
         maxValueAsString && setMaxValue(JSON.parse(maxValueAsString));
-    }, [])
+    }, []);
 
     useEffect(() => {
         localStorage.setItem('currentValue', JSON.stringify(count));
-    }, [count])
+    }, [count]);
 
     useEffect(() => {
-        localStorage.setItem('maxValue', JSON.stringify(maxValue))
-        localStorage.setItem('minValue', JSON.stringify(minValue))
-    }, [maxValue, minValue])
+        localStorage.setItem('maxValue', JSON.stringify(maxValue));
+        localStorage.setItem('minValue', JSON.stringify(minValue));
+    }, [maxValue, minValue]);
 
     const plus = () => setCount((prevState) => prevState + 1);
     const minus = () => setCount((prevState) => prevState - 1);
@@ -60,7 +60,7 @@ const Counter: FC<CounterPropsType> = () => {
 
     const changeSettingsStatus = () => {
         setAreSettingsOpen(!areSettingsOpen);
-    }
+    };
 
 
     const isButtonDisabled = (name: string) => {
