@@ -97,6 +97,10 @@ const Counter: FC<CounterPropsType> = () => {
         <div className={styles.wrapper}>
             <div className={`${styles.counter} ${areSettingsOpen ? styles.counterWithSettings : ''}`}>
                 {count === maxValue && (<p className={styles.maxValue}>You have reached the maximum value!</p>)}
+                <div className={styles.minMaxValues}>
+                    <div>Max value: {maxValue}</div>
+                    <div>Min value: {minValue}</div>
+                </div>
                 <div className={displayClassName}>{count}</div>
                 <div className={styles.buttons}>
                     <Button
