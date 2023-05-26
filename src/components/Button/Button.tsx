@@ -1,20 +1,21 @@
-import React, { FC } from 'react';
+import React from 'react';
 import styles from './Button.module.css';
 
-export type ButtonPropsType = {
-    name: string;
-    disabled?: boolean;
-    onClick: () => void;
+type PropsType = {
+    name: string
+    disabled?: boolean
+    className?: string
+    onClick: () => void
 };
 
-export const Button: FC<ButtonPropsType> = ({
-                                                name,
-                                                disabled = false,
-                                                onClick,
-                                            }) => {
+export const Button = ({name, disabled = false, className, onClick}: PropsType) => {
+    const buttonClassName = `${styles.button} ${className ? className : ''}`
 
     return (
-        <button className={styles.button} disabled={disabled} onClick={onClick}>
+        <button className={buttonClassName}
+                disabled={disabled}
+                onClick={onClick}
+        >
             {name}
         </button>
     );
