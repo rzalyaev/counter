@@ -1,32 +1,33 @@
 .button {
     cursor: pointer;
-    margin: 0 5px;
     min-height: 40px;
     min-width: 80px;
+    padding: 5px;
     font-family: inherit;
     font-size: 18px;
     font-weight: 600;
-    color: white;
-    border: 1px solid #E8EDE7;
+    color: #fee8ee;
+    border: none;
     border-radius: 5px;
-    background-color: #2F3148;
-    transition: background-color 200ms ease-in-out;
+    background-color: #f51a51;
+    transition: background-color 150ms ease-in-out;
+    box-shadow: 0 4px 18px #f51a5159, inset 0 1px #ffffff4d;
 }
 
 button:disabled {
     cursor: no-drop;
-    background-color: #8689AC;
+    background-color: #fba3b9;
 }
 
 button:hover {
-    transition: background-color 200ms ease-in-out;
-    background-color: #3F5576;
+    transition: 150ms ease-in-out;
+    background-color: #f74874;
 }
 
 button:disabled:hover {
-    background-color: #8689AC;
+    background-color: #fba3b9;
 }
 
 button:active {
-    background-color: #27293b;
+    background-color: #c41541;
 }
