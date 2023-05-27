@@ -74,6 +74,20 @@
     left: 45px;
 }
 
+.settingsMessage {
+    min-height: 110px;
+    color: #E8EDE7
+}
+
+.error {
+    min-height: 110px;
+    color: #f51a51
+}
+
+.buttons {
+    gap: 10px;
+}
+
 .settingsButtonWrapper {
     position: absolute;
     top: 10px;
