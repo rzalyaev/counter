@@ -14,16 +14,9 @@
     transition: transform 300ms ease-in-out;
 }
 
-.counter.counterWithSettings {
+.counterWithSettings {
     transition: transform 300ms ease-in-out;
-    transform: translateX(-200px);
-}
-
-.minMaxValues {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: white;
+    transform: translateX(-100px);
 }
 
 .display, .disabledDisplay, .buttons {
