@@ -44,8 +44,21 @@
     color: #E8EDE7;
 }
 
-.disabledDisplay {
-    color: #d92b2b;
+.disabledCount {
+    color: #f51a51;
+}
+
+.minMaxValues {
+    opacity: 0;
+    min-width: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #f51a51;
+    transition: ease-in-out 200ms;
+}
+
+.count:hover, .minMaxValues:hover {
+    cursor: default;
 }
 
 .maxValue {
