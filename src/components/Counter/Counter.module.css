@@ -69,8 +69,8 @@
 .maxValueWarning {
     position: absolute;
     text-align: center;
-    color: white;
-    top: 50px;
+    color: #E8EDE7;
+    top: 100px;
     left: 45px;
 }
 
