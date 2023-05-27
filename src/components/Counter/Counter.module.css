@@ -30,12 +30,12 @@
     justify-content: center;
 }
 
-.display, .disabledDisplay {
+.count, .disabledCount {
     font-size: 90px;
     font-weight: bold;
 }
 
-.display {
+.count {
     color: #E8EDE7;
 }
 
