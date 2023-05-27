@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import Counter from "./components/Counter/Counter";
+import Settings from "./components/Settings/Settings";
 
 const App = () => {
     const [count, setCount] = useState<number>(0);
@@ -41,9 +42,26 @@ const App = () => {
 
     return (
         <div className='App'>
-            <Counter/>
+            <Counter count={count}
+                     minValue={minValue}
+                     maxValue={maxValue}
+                     showSettings={showSettings}
+                     error={error}
+                     increase={increase}
+                     decrease={decrease}
+                     reset={reset}
+                     changeSettingsState={changeSettingsState}
+            />
+            <Settings minValue={minValue}
+                      maxValue={maxValue}
+                      showSettings={showSettings}
+                      changeMinValue={changeMinValue}
+                      changeMaxValue={changeMaxValue}
+                      changeSettingsState={changeSettingsState}
+                      changeErrorText={changeErrorText}
+            />
         </div>
-    )
-}
+    );
+};
 
 export default App;
