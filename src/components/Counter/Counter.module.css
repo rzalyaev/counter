@@ -61,7 +61,12 @@
     cursor: default;
 }
 
-.maxValue {
+.display:hover .minMaxValues {
+    transition: opacity ease-in-out 200ms;
+    opacity: 100%;
+}
+
+.maxValueWarning {
     position: absolute;
     text-align: center;
     color: white;
