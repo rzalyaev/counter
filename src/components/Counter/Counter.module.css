@@ -19,7 +19,13 @@
     transform: translateX(-100px);
 }
 
-.display, .disabledDisplay, .buttons {
+.display,
+.count,
+.disabledCount,
+.minMaxValues,
+.settingsMessage,
+.error,
+.buttons {
     display: flex;
     justify-content: center;
 }
