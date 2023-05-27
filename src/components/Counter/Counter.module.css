@@ -28,6 +28,11 @@
 .buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.display {
+    gap: 15px;
 }
 
 .count, .disabledCount {
