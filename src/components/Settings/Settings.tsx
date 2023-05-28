@@ -51,15 +51,27 @@ const Settings = ({minValue, maxValue, showSettings, changeMinValue, changeMaxVa
     const buttonDisableCondition = newMinValue < 0 || newMaxValue < 0 || newMaxValue <= newMinValue;
 
     return (
-        <div className={styles.settingsWrapper}>
-            <div className={styles.setting}>
-                <Input type={'number'} newValue={newMaxValue} placeholder={'Enter new max value'}/>
-                <Button name={'SET MAX VALUE'} onClick={changeMaxValue}/>
-            </div>
-            <div className={styles.setting}>
-                <Input type={'number'} newValue={newMinValue} placeholder={'Enter new min value'}/>
-                <Button name={'SET MIN VALUE'} onClick={changeMinValue}/>
-            </div>
+        <div className={settingsClassName}>
+            <fieldset className={styles.setting}>
+                <legend>Min value</legend>
+                <Input type={'number'}
+                       value={newMinValue}
+                       className={styles.clearInput}
+                       onChange={changeNewMinValue}
+                />
+            </fieldset>
+            <fieldset className={styles.setting}>
+                <legend>Max value</legend>
+                <Input type={'number'}
+                       value={newMaxValue}
+                       onChange={changeNewMaxValue}
+                />
+            </fieldset>
+            <Button className={styles.setButton}
+                    name={'SET'}
+                    disabled={buttonDisableCondition}
+                    onClick={saveSettings}
+            />
         </div>
     );
 };
