@@ -19,11 +19,9 @@ export const Input = ({type, value, className, onChange}: PropsType) => {
 
     return (
         <input className={styles.input}
-               min={0}
                type={type}
-               ref={newValue}
-               placeholder={placeholder}
-               onInput={handleInput}
+               value={value}
+               onChange={handleOnChange}
                onKeyDown={handleKeyDown}
                onPaste={handlePaste}
         />
