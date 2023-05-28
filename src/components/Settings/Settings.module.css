@@ -1,15 +1,23 @@
 .settingsWrapper {
+    position: absolute;
     box-sizing: border-box;
-    margin: auto;
     padding: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
     gap: 10px;
     width: 400px;
     height: 400px;
-    border: 2px solid #E8EDE7;
-    border-radius: 15px;
-    background-color: #2F3148;
+    border: 1px solid #182637;
+    border-radius: 10px;
+    background-color: #131e2c;
+    transition: transform 300ms ease-in-out;
+}
+
+.open {
+    transition: transform 300ms ease-in-out;
+    transform: translateX(105px);
 }
 
 .setting {
