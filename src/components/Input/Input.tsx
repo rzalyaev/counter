@@ -1,31 +1,21 @@
-import React, {FC, KeyboardEvent, RefObject} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import styles from './Input.module.css';
 
-export type InputPropsType = {
-    type: string;
-    placeholder: string;
-    newValue: RefObject<HTMLInputElement>;
+export type PropsType = {
+    type: string
+    value: number
+    className?: string
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void
 };
 
-export const Input: FC<InputPropsType> = ({type, placeholder, newValue}) => {
-    function handleKeyDown(e: KeyboardEvent<HTMLInputElement>): void {
-        if (e.key === '-') {
-            e.preventDefault();
-        }
-    }
+export const Input = ({type, value, className, onChange}: PropsType) => {
+    const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => onChange(e);
 
-    function handleInput(e: React.FormEvent<HTMLInputElement>): void {
-        const value = e.currentTarget.value;
-        if (value.startsWith('0')) {
-            e.currentTarget.value = value.replace(/[^0-9]/g, '').substring(0, 1);
-        } else {
-            e.currentTarget.value = value.replace(/[^0-9]/g, '');
-        }
-    }
+    // Защита от ввода отрицательного значения
+    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {e.key === '-' && e.preventDefault()}
 
-    function handlePaste(e: React.ClipboardEvent<HTMLInputElement>): void {
-        e.preventDefault();
-    }
+    // Запрет добавления значения из буфера обмена
+    const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>): void => e.preventDefault();
 
     return (
         <input className={styles.input}
