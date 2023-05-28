@@ -13,8 +13,24 @@
 }
 
 .setting {
+    box-sizing: border-box;
+    padding: 2px 5px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    width: calc(50% - 5px);
+    color: white;
+    border: 1px solid #E8EDE7;
+    border-radius: 5px;
+}
+
+.setting legend {
+    color: white;
+}
+
+.clearInput {
+    all: unset;
+}
+
+.setButton {
     height: max-content;
 }
