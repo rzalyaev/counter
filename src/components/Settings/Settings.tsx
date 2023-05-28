@@ -75,3 +75,5 @@ const Settings = ({minValue, maxValue, showSettings, changeMinValue, changeMaxVa
         </div>
     );
 };
+
+export default Settings;
