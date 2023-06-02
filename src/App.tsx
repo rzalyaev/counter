@@ -15,12 +15,10 @@ const App = () => {
 
     useEffect(() => {
         const minValueAsString = localStorage.getItem('minValue');
-        const minValueAsNumber = minValueAsString && JSON.parse(minValueAsString);
-        setMinValue(minValueAsNumber);
+        minValueAsString && setMinValue(JSON.parse(minValueAsString));
 
         const maxValueAsString = localStorage.getItem('maxValue');
-        const maxValueAsNumber = maxValueAsString && JSON.parse(maxValueAsString);
-        setMaxValue(maxValueAsNumber);
+        maxValueAsString && setMinValue(JSON.parse(maxValueAsString));
     }, []);
 
     useEffect(() => localStorage.setItem('minValue', JSON.stringify(minValue)), [minValue]);
