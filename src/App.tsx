@@ -4,9 +4,12 @@ import Counter from "./components/Counter/Counter";
 import Settings from "./components/Settings/Settings";
 
 const App = () => {
-    const [count, setCount] = useState<number>(0);
-    const [minValue, setMinValue] = useState<number>(0);
-    const [maxValue, setMaxValue] = useState<number>(10);
+    const initialMinValue = 0;
+    const initialMaxValue = 5;
+
+    const [count, setCount] = useState<number>(initialMinValue);
+    const [minValue, setMinValue] = useState<number>(initialMinValue);
+    const [maxValue, setMaxValue] = useState<number>(initialMaxValue);
     const [showSettings, setShowSettings] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
 
@@ -38,7 +41,6 @@ const App = () => {
     const changeSettingsState = () => setShowSettings(!showSettings);
 
     const changeErrorText = (errorText: string) => setError(errorText);
-
 
     return (
         <div className='App'>
