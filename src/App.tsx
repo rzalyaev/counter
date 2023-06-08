@@ -1,60 +1,56 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import './App.css';
 import Counter from "./components/Counter/Counter";
 import Settings from "./components/Settings/Settings";
+import {
+    counterReducer,
+    counterState,
+    updateCountAC, updateErrorMessageAC,
+    updateMaxValueAC,
+    updateMinValueAC,
+    updateShowSettingsAC
+} from "./reducers/counter-reducer";
 
 const App = () => {
-    const initialMinValue = 0;
-    const initialMaxValue = 5;
-
-    const [count, setCount] = useState<number>(initialMinValue);
-    const [minValue, setMinValue] = useState<number>(initialMinValue);
-    const [maxValue, setMaxValue] = useState<number>(initialMaxValue);
-    const [showSettings, setShowSettings] = useState<boolean>(false);
-    const [error, setError] = useState<string>('');
+    const [counter, dispatch] = useReducer(counterReducer, counterState);
 
     useEffect(() => {
         const minValueAsString = localStorage.getItem('minValue');
-        minValueAsString && setMinValue(JSON.parse(minValueAsString));
+        minValueAsString && dispatch(updateMinValueAC(JSON.parse(minValueAsString)));
+        minValueAsString && dispatch(updateCountAC(JSON.parse(minValueAsString)));
 
         const maxValueAsString = localStorage.getItem('maxValue');
-        maxValueAsString && setMinValue(JSON.parse(maxValueAsString));
+        maxValueAsString && dispatch(updateMaxValueAC(JSON.parse(maxValueAsString)));
     }, []);
 
-    useEffect(() => localStorage.setItem('minValue', JSON.stringify(minValue)), [minValue]);
-    useEffect(() => localStorage.setItem('maxValue', JSON.stringify(maxValue)), [maxValue]);
+    useEffect(() => localStorage.setItem('minValue', JSON.stringify(counter.minValue)), [counter.minValue]);
+    useEffect(() => localStorage.setItem('maxValue', JSON.stringify(counter.maxValue)), [counter.maxValue]);
 
-    const increase = () => {count < maxValue && setCount(count + 1)};
-    const decrease = () => {count > minValue && setCount(count - 1)};
-    const reset = () => setCount(minValue);
+    const increase = () => counter.count < counter.maxValue && dispatch(updateCountAC(counter.count + 1));
+    const decrease = () => counter.count > counter.minValue && dispatch(updateCountAC(counter.count - 1));
+    const reset = () => dispatch(updateCountAC(counter.minValue));
 
-    const changeMinValue = (newMinValue: number) => {
-        if (newMinValue >= 0 && newMinValue < maxValue) {
-            setMinValue(newMinValue);
-            setCount(newMinValue);
-        }
+    const  changeMinValue = (newMinValue: number) => {
+        dispatch(updateMinValueAC(newMinValue));
+        dispatch(updateCountAC(newMinValue));
     }
-    const changeMaxValue = (newMaxValue: number) => {newMaxValue > minValue && setMaxValue(newMaxValue)};
+    const changeMaxValue = (newMaxValue: number) => dispatch(updateMaxValueAC(newMaxValue));
 
-    const changeSettingsState = () => setShowSettings(!showSettings);
+    const changeSettingsState = () => dispatch(updateShowSettingsAC(!counter.showSettings));
 
-    const changeErrorText = (errorText: string) => setError(errorText);
+    const changeErrorText = (errorText: string) => dispatch(updateErrorMessageAC(errorText));
 
     return (
         <div className='App'>
-            <Counter count={count}
-                     minValue={minValue}
-                     maxValue={maxValue}
-                     showSettings={showSettings}
-                     error={error}
+            <Counter counter={counter}
                      increase={increase}
                      decrease={decrease}
                      reset={reset}
                      changeSettingsState={changeSettingsState}
             />
-            <Settings minValue={minValue}
-                      maxValue={maxValue}
-                      showSettings={showSettings}
+            <Settings minValue={counter.minValue}
+                      maxValue={counter.maxValue}
+                      showSettings={counter.showSettings}
                       changeMinValue={changeMinValue}
                       changeMaxValue={changeMaxValue}
                       changeSettingsState={changeSettingsState}
