@@ -22,6 +22,12 @@ const Settings = ({minValue, maxValue, showSettings, changeMinValue, changeMaxVa
     useEffect(() => setNewMinValue(minValue), [minValue]);
     useEffect(() => setNewMaxValue(maxValue), [maxValue]);
 
+    useEffect(() => {
+        setNewMinValue(minValue);
+        setNewMaxValue(maxValue);
+        changeErrorText('');
+    }, [showSettings]);
+
     // input onChange handlers
     const changeNewMinValue = (e: ChangeEvent<HTMLInputElement>) => {
         const newMinValueFromInput = e.currentTarget.valueAsNumber;
