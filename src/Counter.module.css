@@ -19,15 +19,20 @@
     font-weight: 500;
 }
 
+.maxCount {
+    color: #f31a50;
+}
+
 .buttonsWrapper {
     height: 20%;
     display: flex;
+    justify-content: center;
     border-top: 2px solid #fffefe;
 }
 
 .button {
     cursor: pointer;
-    width: 50%;
+    width: 100%;
     color: #fffefe;
     background-color: #0e1720;
     border: none;
@@ -45,6 +50,10 @@
     background-color: #182636;
 }
 
-.incrementButton {
+.button:disabled {
+    background-color: #45505d;
+}
+
+.button:not(.button:last-of-type) {
     border-right: 1px solid #fffefe;
 }
