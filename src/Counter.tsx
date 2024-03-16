@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import styles from './Counter.module.css';
 import {Button} from "./components/Button/Button";
 import {
