@@ -9,10 +9,19 @@ function Counter() {
 
   const incrementButtonClassName: string = `${styles.button} ${styles.incrementButton}`;
   const resetButtonClassName: string = `${styles.button} ${styles.resetButton}`;
+  const displayClassName: string = `${styles.display} ${state.count === state.maxValue && styles.maxCount}`;
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.display}>{count}</div>
+      {!state.settingsMode
+          ? <div className={displayClassName}>{state.count}</div>
+          : <Settings state={state}
+                      changeStartValue={changeStartValue}
+                      changeMaxValue={changeMaxValue}
+                      toggleStartValueError={toggleStartValueError}
+                      toggleMaxValueError={toggleMaxValueError}
+          />
+      }
       <div className={styles.buttonsWrapper}>
         {!state.settingsMode &&
             <Button title={'inc'}
