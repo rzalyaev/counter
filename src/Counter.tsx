@@ -14,8 +14,32 @@ function Counter() {
     <div className={styles.wrapper}>
       <div className={styles.display}>{count}</div>
       <div className={styles.buttonsWrapper}>
-        <Button title={'increment'} onClickHandler={increment} className={incrementButtonClassName}/>
-        <Button title={'reset'} onClickHandler={reset} className={resetButtonClassName}/>
+        {!state.settingsMode &&
+            <Button title={'inc'}
+                    onClickHandler={increment}
+                    className={styles.button}
+                    disabled={state.count === state.maxValue}
+            />
+        }
+        {!state.settingsMode &&
+            <Button title={'reset'}
+                    onClickHandler={reset}
+                    className={styles.button}
+                    disabled={state.count === state.startValue}
+            />
+        }
+        {state.settingsMode
+            ? <Button title={'close'}
+                     onClickHandler={handleCloseButtonOnClick}
+                     className={styles.button}
+                     disabled={state.startValueError || state.maxValueError}
+            />
+            : <Button title={'set'}
+                      onClickHandler={toggleSettingsMode}
+                      className={styles.button}
+                      disabled={state.startValueError || state.maxValueError}
+            />
+        }
       </div>
     </div>
   );
