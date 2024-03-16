@@ -1,0 +1,59 @@
+.wrapper {
+    margin: 0 auto;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.setting {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputTitle {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.inputWrapper {
+    position: relative;
+}
+
+.input {
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 3px;
+    padding: 7px 10px;
+    display: flex;
+    font-size: 18px;
+    transition: 200ms ease-in-out;
+}
+
+.input, .input:focus {
+    border: none;
+    outline: none;
+}
+
+.errorInput {
+    color: white;
+    background-color: rgb(239, 62, 107);
+    transition: 200ms ease-in-out;
+}
+
+.error {
+    position: absolute;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-align: left;
+    color: rgb(239, 62, 107);
+    bottom: -15px;
+    left: 0;
+}
