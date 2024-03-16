@@ -6,9 +6,34 @@ function Counter() {
   const [count, setCount] = useState<number>(0);
   const increment = () => setCount(prevState => prevState + 1);
   const reset = () => setCount(0);
+  // UseEffect hooks ---------------------------------------------------------------------------------------------------
+  const countValue = 'countValue';
+  const startValue = 'startValue';
+  const maxValue = 'maxValue';
+  useEffect(() => {
+    const localStorageCountValue = localStorage.getItem(countValue);
+    localStorageCountValue && changeCount(JSON.parse(localStorageCountValue));
 
-  const incrementButtonClassName: string = `${styles.button} ${styles.incrementButton}`;
-  const resetButtonClassName: string = `${styles.button} ${styles.resetButton}`;
+    const localStorageStartValue = localStorage.getItem(startValue);
+    localStorageStartValue && changeStartValue(JSON.parse(localStorageStartValue));
+
+    const localStorageMaxValue = localStorage.getItem(maxValue);
+    localStorageMaxValue && changeMaxValue(JSON.parse(localStorageMaxValue));
+  }, []);
+  useEffect(() => {
+    const localStorageCountValue = JSON.stringify(state.count);
+    localStorage.setItem(countValue, localStorageCountValue);
+  }, [state.count]);
+  useEffect(() => {
+    const localStorageStartValue = JSON.stringify(state.startValue);
+    localStorage.setItem(startValue, localStorageStartValue);
+  }, [state.startValue]);
+  useEffect(() => {
+    const localStorageMaxValue = JSON.stringify(state.maxValue);
+    localStorage.setItem(maxValue, localStorageMaxValue);
+  }, [state.maxValue]);
+
+  // Class names -------------------------------------------------------------------------------------------------------
   const displayClassName: string = `${styles.display} ${state.count === state.maxValue && styles.maxCount}`;
 
   return (
