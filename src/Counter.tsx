@@ -1,11 +1,33 @@
 import React, {useState} from 'react';
 import styles from './Counter.module.css';
 import {Button} from "./components/Button/Button";
+import {
+  changeCountAC,
+  changeMaxValueAC,
+  changeStartValueAC,
+  counterReducer,
+  incrementAC,
+  initialState,
+  resetAC, toggleMaxValueErrorAC,
+  toggleSettingsModeAC, toggleStartValueErrorAC
+} from "./reducers/counterReducer";
+import {Settings} from "./components/Settings/Settings";
 
-function Counter() {
-  const [count, setCount] = useState<number>(0);
-  const increment = () => setCount(prevState => prevState + 1);
-  const reset = () => setCount(0);
+const Counter = () => {
+  const [state, dispatch] = useReducer(counterReducer, initialState);
+  const increment = () => dispatch(incrementAC());
+  const reset = () => dispatch(resetAC());
+  const toggleSettingsMode = () => dispatch(toggleSettingsModeAC());
+  const changeCount = (newCountValue: number) => dispatch(changeCountAC(newCountValue));
+  const changeStartValue = (newStartValue: number) => dispatch(changeStartValueAC(newStartValue));
+  const changeMaxValue = (newMaxValue: number) => dispatch(changeMaxValueAC(newMaxValue));
+  const toggleStartValueError = (newValue: boolean) => dispatch(toggleStartValueErrorAC(newValue));
+  const toggleMaxValueError = (newValue: boolean) => dispatch(toggleMaxValueErrorAC(newValue));
+  const handleCloseButtonOnClick = () => {
+    toggleSettingsMode();
+    state.count < state.startValue && reset();
+  }
+
   // UseEffect hooks ---------------------------------------------------------------------------------------------------
   const countValue = 'countValue';
   const startValue = 'startValue';
