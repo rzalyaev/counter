@@ -76,7 +76,7 @@ export const counterReducer = (state: StateType = initialState, action: ActionTy
       return {...state, startValueError: action.newValue};
     case CounterReducerActionTypes.TOGGLE_MAX_VALUE_ERROR:
       return {...state, maxValueError: action.newValue};
-    default: throw new Error('Unknown action type');
+    default: return state;
   }
 }
 
@@ -100,7 +100,7 @@ export const changeMaxValueAC = (newMaxValue: number) => {
 };
 export const toggleStartValueErrorAC = (newValue: boolean) => {
   return {type: CounterReducerActionTypes.TOGGLE_START_VALUE_ERROR, newValue} as const
-}
+};
 export const toggleMaxValueErrorAC = (newValue: boolean) => {
   return {type: CounterReducerActionTypes.TOGGLE_MAX_VALUE_ERROR, newValue} as const
-}
+};
