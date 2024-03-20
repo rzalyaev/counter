@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import styles from './Settings.module.css';
-import {StateType} from "../../reducers/counterReducer";
+import {StateType} from "../../redux/reducers/counterReducer";
 
 type SettingsPropsType = {
   state: StateType
