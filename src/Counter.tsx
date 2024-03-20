@@ -1,20 +1,24 @@
-import React, {useEffect, useReducer} from 'react';
+import React, {useEffect} from 'react';
 import styles from './Counter.module.css';
 import {Button} from "./components/Button/Button";
 import {
   changeCountAC,
   changeMaxValueAC,
   changeStartValueAC,
-  counterReducer,
   incrementAC,
-  initialState,
-  resetAC, toggleMaxValueErrorAC,
-  toggleSettingsModeAC, toggleStartValueErrorAC
-} from "./reducers/counterReducer";
+  resetAC,
+  StateType,
+  toggleMaxValueErrorAC,
+  toggleSettingsModeAC,
+  toggleStartValueErrorAC
+} from "./redux/reducers/counterReducer";
 import {Settings} from "./components/Settings/Settings";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "./redux/store";
 
 const Counter = () => {
-  const [state, dispatch] = useReducer(counterReducer, initialState);
+  const state = useSelector<AppRootStateType, StateType>(state => state.counter);
+  const dispatch = useDispatch();
   const increment = () => dispatch(incrementAC());
   const reset = () => dispatch(resetAC());
   const toggleSettingsMode = () => dispatch(toggleSettingsModeAC());
