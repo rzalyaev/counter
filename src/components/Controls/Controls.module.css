@@ -1,0 +1,50 @@
+.container {
+    height: 40%;
+    width: 100%;
+}
+
+.counterControls {
+    height: 50%;
+    width: 100%;
+}
+
+.counterControls > button, .settingsControls > button {
+    cursor: pointer;
+    color: #fffefe;
+    background: #0e1720;
+    border: 1px solid #fffefe;
+    font-family: 'Montserrat', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: background-color ease-in-out 150ms;
+}
+
+.incrementButton:hover, .decrementButton:hover, .resetButton:hover, .settingsButton:hover {
+    background-color: #131e2b;
+    transition: background-color ease-in-out 150ms;
+}
+
+.incrementButton, .decrementButton, .resetButton {
+    height: 100%;
+}
+
+.incrementButton, .decrementButton {
+    width: 25%;
+}
+
+.incrementButton:disabled, .decrementButton:disabled {
+    background: #182636;
+}
+
+.resetButton {
+    width: 50%;
+}
+
+.settingsControls {
+    height: 50%;
+}
+
+.settingsButton {
+    height: 100%;
+    width: 100%;
+}

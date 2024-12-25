@@ -1,0 +1,35 @@
+.container, .minMaxValues {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+}
+
+.container {
+    position: relative;
+    height: 60%;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.minMaxValues {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px 10px;
+    justify-content: space-between;
+}
+
+.countDisplay {
+    font-weight: 600;
+    font-size: 5rem;
+}
+
+.error {
+    font-size: 2rem;
+    color: #f51a51;
+}
+
+.maxValueReached {
+    color: #f51a51;
+}

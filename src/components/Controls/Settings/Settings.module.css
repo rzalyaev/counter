@@ -1,0 +1,52 @@
+.container {
+    height: 100%;
+    color: #fffefe;
+    background: #0e1720;
+    font-family: 'Montserrat', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: background-color ease-in-out 150ms;
+}
+
+.minValue, .maxValue {
+    padding: 0 10px;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #fffefe;
+}
+
+.minValue > span, .maxValue > span {
+    width: 50%;
+}
+
+.minValue > input, .maxValue > input {
+    width: 50%;
+    font-size: 1.2rem;
+}
+
+.quitButton {
+    height: 40%;
+}
+
+.quitButton {
+    width: 100%;
+    cursor: pointer;
+    color: #fffefe;
+    background: #0e1720;
+    border-top: 1px solid #fffefe;
+    font-family: 'Montserrat', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    transition: background-color ease-in-out 150ms;
+}
+
+.quitButton:hover {
+    background-color: #131e2b;
+}
+
+.quitButton:disabled {
+    cursor: not-allowed;
+    background-color: #182636;
+}
