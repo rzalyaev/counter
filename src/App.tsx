@@ -1,14 +1,41 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import './App.css';
 import {Display} from "./components/Display/Display";
 import {Controls} from "./components/Controls/Controls";
 
 function App() {
+    const defaultMinValue = 0;
+    const localStorageMinValueKey = 'minValue';
+    const localStorageMinValue = localStorage.getItem(localStorageMinValueKey);
+    const getMinValueFromLS = () => localStorageMinValue ? JSON.parse(localStorageMinValue) : defaultMinValue;
+
+    const defaultMaxValue = 5;
+    const localStorageMaxValueKey = 'maxValue';
+    const localStorageMaxValue = localStorage.getItem(localStorageMaxValueKey);
+    const getMaxValueFromLS = () =>localStorageMaxValue ? JSON.parse(localStorageMaxValue) : defaultMaxValue;
+
     const [count, setCount] = useState<number>(0);
-    const [minValue, setMinValue] = useState<number>(0);
-    const [maxValue, setMaxValue] = useState<number>(5);
+    const [minValue, setMinValue] = useState<number>(getMinValueFromLS());
+    const [maxValue, setMaxValue] = useState<number>(getMaxValueFromLS());
     const [error, setError] = useState<string>('');
     const [settingsMode, setSettingsMode] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (localStorageMinValue) {
+            setMinValue(JSON.parse(localStorageMinValue));
+            setCount(JSON.parse(localStorageMinValue));
+        }
+        localStorageMaxValue && setMaxValue(JSON.parse(localStorageMaxValue));
+    }, [localStorageMinValue, localStorageMaxValue]);
+
+    useEffect(() => {
+        if (minValue >= 0 && minValue < maxValue) {
+            localStorage.setItem(localStorageMinValueKey, JSON.stringify(minValue));
+        }
+        if (maxValue > minValue) {
+            localStorage.setItem(localStorageMaxValueKey, JSON.stringify(maxValue));
+        }
+    }, [minValue, maxValue]);
 
     const increment = () => setCount(prevState => prevState + 1);
     const decrement = () => setCount(prevState => prevState - 1);
