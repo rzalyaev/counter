@@ -45,7 +45,9 @@ export const Controls = ({
                                 disabled={count === minValue || error !== ''}
                                 className={styles.decrementButton}>-
                         </Button>
-                        <Button onClick={reset} className={styles.resetButton}>RESET</Button>
+                        <Button onClick={reset}
+                                disabled={count === minValue || error !== ''}
+                                className={styles.resetButton}>RESET</Button>
                     </div>
                     <div className={styles.settingsControls}>
                         <Button onClick={openSettings} className={styles.settingsButton}>SETTINGS</Button>
