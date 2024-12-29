@@ -11,7 +11,7 @@ import {
     decrementAC,
     incrementAC, closeSettingsAC, openSettingsAC,
     resetAC,
-    State, initialState
+    initialState
 } from "./reducers/counterReducer";
 
 function App() {
